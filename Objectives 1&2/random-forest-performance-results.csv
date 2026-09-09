@@ -1,0 +1,11 @@
+Evaluation,Metric,Mean,Standard_Deviation
+Holdout test set,ROC-AUC,0.9949,
+Holdout test set,Accuracy,0.9735,
+Holdout test set,Precision,0.891832,
+Holdout test set,Recall,0.990196,
+Holdout test set,F1 score,0.938444,
+5-fold cross-validation,ROC-AUC,0.993322,0.001843
+5-fold cross-validation,Accuracy,0.9734,0.002083
+5-fold cross-validation,Precision,0.887631,0.007674
+5-fold cross-validation,Recall,0.995585,0.001834
+5-fold cross-validation,F1 score,0.938498,0.004616

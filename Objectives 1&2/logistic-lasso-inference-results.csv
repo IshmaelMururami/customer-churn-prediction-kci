@@ -1,0 +1,18 @@
+Variable,Variable_Type,Level_or_Unit,LASSO_Selected,LASSO_Coefficient,Inference_Coefficient,Odds_Ratio,OR_95%_CI_Lower,OR_95%_CI_Upper,p_value,Significance_at_5%
+Complain,Categorical,1,Yes,9.137414,9.156405,9474.9319,4458.7199,20134.5537,0.0,Significant
+Age,Continuous,Per one standard deviation increase,Yes,0.940228,0.94136,2.5635,2.1786,3.0163,0.0,Significant
+NumOfProducts,Categorical,2,Yes,-1.412064,-1.411633,0.2437,0.1811,0.3281,0.0,Significant
+Gender,Categorical,Male,Yes,-0.884782,-0.885062,0.4127,0.3077,0.5535,0.0,Significant
+IsActiveMember,Categorical,1,Yes,-0.835755,-0.834613,0.434,0.3253,0.5791,0.0,Significant
+NumOfProducts,Categorical,3,Yes,2.142948,2.14501,8.5421,2.5865,28.2115,0.000433,Significant
+Balance,Continuous,Per one standard deviation increase,Yes,0.228424,0.228736,1.257,1.0842,1.4573,0.00243,Significant
+SatisfactionScore,Categorical,2,Yes,0.387267,0.389462,1.4762,0.9328,2.3361,0.096309,Not significant
+SatisfactionScore,Categorical,5,Yes,0.318716,0.321432,1.3791,0.8626,2.2049,0.179417,Not significant
+EstimatedSalary,Continuous,Per one standard deviation increase,Yes,-0.096873,-0.097021,0.9075,0.7855,1.0486,0.188046,Not significant
+PointEarned,Continuous,Per one standard deviation increase,Yes,-0.073888,-0.073914,0.9288,0.8054,1.0709,0.309153,Not significant
+CreditScore,Continuous,Per one standard deviation increase,Yes,-0.072807,-0.072807,0.9298,0.8059,1.0727,0.318199,Not significant
+HasCreditCard,Categorical,1,Yes,-0.087368,-0.08529,0.9182,0.67,1.2585,0.595913,Not significant
+Tenure,Continuous,Per one standard deviation increase,Yes,0.016822,0.01692,1.0171,0.8832,1.1713,0.814257,Not significant
+SatisfactionScore,Categorical,3,Yes,0.042485,0.044807,1.0458,0.6739,1.6229,0.841595,Not significant
+SatisfactionScore,Categorical,4,Yes,0.025923,0.027939,1.0283,0.6652,1.5898,0.899982,Not significant
+NumOfProducts,Categorical,4,Yes,15.303943,27.094526,584794438821.71,0.0,inf,0.999399,Not significant

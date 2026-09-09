@@ -791,3 +791,110 @@ footer {
     }
 
 }
+
+
+/* =====================================================
+   PROGRESSIVE FRONTEND POLISH
+   ===================================================== */
+
+body.page-ready {
+    animation: page-arrival 0.7s ease both;
+}
+
+.motion-ready {
+    opacity: 0;
+    transform: translateY(14px);
+}
+
+.motion-ready.motion-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.form-group input.field-active,
+.form-group select.field-active {
+    border-color: #635bff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(99, 91, 255, 0.1), 0 0 0 4px rgba(99, 91, 255, 0.08);
+}
+
+.form-group input.field-complete,
+.form-group select.field-complete {
+    border-color: #98a2b3;
+}
+
+.form-group input.field-invalid,
+.form-group select.field-invalid {
+    border-color: #d92d20;
+    box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.08);
+}
+
+.form-invalid input:invalid,
+.form-invalid select:invalid {
+    border-color: #d92d20;
+}
+
+button.is-loading {
+    cursor: wait;
+    opacity: 0.88;
+    transform: none;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    vertical-align: -2px;
+    animation: loading-spin 0.8s linear infinite;
+}
+
+.risk-badge.risk-visible {
+    animation: risk-arrival 0.55s ease both;
+}
+
+@keyframes page-arrival {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes risk-arrival {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .motion-ready {
+        opacity: 1;
+        transform: none;
+    }
+}

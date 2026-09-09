@@ -5,6 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // =====================================================
 
     const form = document.querySelector("form");
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const addClassWhenReady = (element, className, delay = 0) => {
+        if (!element) {
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            element.classList.add(className);
+            return;
+        }
+
+        window.setTimeout(() => {
+            element.classList.add(className);
+        }, delay);
+    };
     const submitButton = form
         ? form.querySelector('button[type="submit"], input[type="submit"]')
         : null;
@@ -13,7 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. Smooth entrance animation
     // -----------------------------------------------------
 
-    document.body.classList.add("page-loaded");
+    document.body.classList.add("page-ready");
+
+    document.querySelectorAll(
+        ".hero, .result-hero, .prediction-card, .result-card, .feature-strip, .result-note"
+    ).forEach((section, index) => {
+        section.classList.add("motion-ready");
+        addClassWhenReady(section, "motion-visible", 80 + (index * 80));
+    });
 
 
     // -----------------------------------------------------
@@ -33,13 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
         field.addEventListener("blur", () => {
             field.classList.remove("field-active");
 
-            if (field.value.trim() !== "") {
+            if (field.value.trim() !== "" && field.checkValidity()) {
                 field.classList.add("field-complete");
             } else {
                 field.classList.remove("field-complete");
             }
         });
 
+
+        field.addEventListener("input", () => {
+            field.classList.toggle(
+                "field-invalid",
+                field.value.trim() !== "" && !field.checkValidity()
+            );
+        });
     });
 
 
@@ -53,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Allow normal Flask form submission
             if (!form.checkValidity()) {
+                form.classList.add("form-invalid");
                 return;
             }
 
@@ -68,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 submitButton.disabled = true;
                 submitButton.classList.add("is-loading");
+                submitButton.setAttribute("aria-busy", "true");
             }
 
             // Prevent accidental double submission
@@ -85,9 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (form) {
 
-        form.addEventListener("submit", () => {
+        form.addEventListener("submit", (event) => {
 
             if (submissionStarted) {
+                event.preventDefault();
                 return;
             }
 
@@ -103,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // -----------------------------------------------------
 
     const probabilityBar = document.querySelector(
-        ".probability-fill"
+        ".probability-fill, .progress-bar"
     );
 
     if (probabilityBar) {
@@ -113,17 +148,19 @@ document.addEventListener("DOMContentLoaded", () => {
             probabilityBar.getAttribute("data-width") ||
             probabilityBar.style.width;
 
-        probabilityBar.style.width = "0%";
+        if (!prefersReducedMotion) {
+            probabilityBar.style.width = "0%";
+        }
 
         requestAnimationFrame(() => {
 
-            setTimeout(() => {
+            window.setTimeout(() => {
 
                 if (targetWidth) {
                     probabilityBar.style.width = targetWidth;
                 }
 
-            }, 250);
+            }, prefersReducedMotion ? 0 : 250);
 
         });
 
@@ -140,10 +177,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resultCards.forEach((card, index) => {
 
+        if (prefersReducedMotion) {
+            card.classList.add("motion-visible");
+            return;
+        }
+
         card.style.opacity = "0";
         card.style.transform = "translateY(12px)";
 
-        setTimeout(() => {
+        window.setTimeout(() => {
 
             card.style.transition =
                 "opacity 0.5s ease, transform 0.5s ease";
@@ -166,9 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (riskBadge) {
 
-        setTimeout(() => {
-            riskBadge.classList.add("risk-visible");
-        }, 500);
+        addClassWhenReady(riskBadge, "risk-visible", 500);
 
     }
 
@@ -204,14 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resultSection) {
 
-        setTimeout(() => {
+        window.setTimeout(() => {
 
             resultSection.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
 
-        }, 300);
+        }, prefersReducedMotion ? 0 : 300);
 
     }
 
@@ -274,6 +314,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.key === "Enter" &&
                 field.tagName !== "SELECT"
             ) {
+
+                if (!form) {
+                    return;
+                }
 
                 const formElements =
                     Array.from(

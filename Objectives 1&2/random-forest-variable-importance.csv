@@ -1,0 +1,6 @@
+Variable,Permutation_Mean_ROC_AUC_Drop,Permutation_SD,Mean_Built_In_Importance
+Complain,0.297575,0.011221,0.872617
+Age,0.007531,0.001351,0.07511
+NumOfProducts,0.005005,0.001137,0.04005
+IsActiveMember,0.001042,0.000616,0.009706
+Gender,0.00049,0.000351,0.002517

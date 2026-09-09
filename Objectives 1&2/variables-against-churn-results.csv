@@ -1,0 +1,24 @@
+Variable,Type,Level,Overall,Stayed (0),Churned (1),Association with Churn,p-value
+CreditScore,Continuous,All values,Mean 650.53; Median 652.00; SD 96.65,Mean 651.84; Median 653.00; SD 95.65,Mean 645.41; Median 646.00; SD 100.34,Mean difference: -6.42,0.0093
+Age,Continuous,All values,Mean 38.92; Median 37.00; SD 10.49,Mean 37.41; Median 36.00; SD 10.13,Mean 44.84; Median 45.00; SD 9.76,Mean difference: 7.43,0.0
+Tenure,Continuous,All values,Mean 5.01; Median 5.00; SD 2.89,Mean 5.03; Median 5.00; SD 2.88,Mean 4.93; Median 5.00; SD 2.94,Mean difference: -0.10,0.1771
+Balance,Continuous,All values,Mean 76485.89; Median 97198.54; SD 62397.41,Mean 72742.75; Median 92063.06; SD 62851.58,Mean 91109.48; Median 109344.23; SD 58346.48,Mean difference: 18366.73,0.0
+EstimatedSalary,Continuous,All values,Mean 100090.24; Median 100193.91; SD 57510.49,Mean 99726.85; Median 99620.35; SD 57399.96,Mean 101509.91; Median 102489.33; SD 57932.62,Mean difference: 1783.06,0.2143
+PointEarned,Continuous,All values,Mean 606.52; Median 605.00; SD 225.92,Mean 607.04; Median 603.00; SD 226.09,Mean 604.45; Median 610.50; SD 225.32,Mean difference: -2.60,0.6429
+Gender,Binary,Female,"n=4,543 (45.4%)","n=3,404 (42.8%)","n=1,139 (55.9%)",Level churn rate: 25.1%,0.0
+Gender,Binary,Male,"n=5,457 (54.6%)","n=4,558 (57.2%)",n=899 (44.1%),Level churn rate: 16.5%,0.0
+NumOfProducts,Categorical,1,"n=5,084 (50.8%)","n=3,675 (46.2%)","n=1,409 (69.1%)",Level churn rate: 27.7%,0.0
+NumOfProducts,Categorical,3,n=266 (2.7%),n=46 (0.6%),n=220 (10.8%),Level churn rate: 82.7%,0.0
+NumOfProducts,Categorical,2,"n=4,590 (45.9%)","n=4,241 (53.3%)",n=349 (17.1%),Level churn rate: 7.6%,0.0
+NumOfProducts,Categorical,4,n=60 (0.6%),n=0 (0.0%),n=60 (2.9%),Level churn rate: 100.0%,0.0
+HasCreditCard,Binary,1,"n=7,055 (70.5%)","n=5,630 (70.7%)","n=1,425 (69.9%)",Level churn rate: 20.2%,0.5026
+HasCreditCard,Binary,0,"n=2,945 (29.4%)","n=2,332 (29.3%)",n=613 (30.1%),Level churn rate: 20.8%,0.5026
+IsActiveMember,Binary,1,"n=5,151 (51.5%)","n=4,416 (55.5%)",n=735 (36.1%),Level churn rate: 14.3%,0.0
+IsActiveMember,Binary,0,"n=4,849 (48.5%)","n=3,546 (44.5%)","n=1,303 (63.9%)",Level churn rate: 26.9%,0.0
+Complain,Binary,1,"n=2,286 (22.9%)",n=257 (3.2%),"n=2,029 (99.6%)",Level churn rate: 88.8%,0.0
+Complain,Binary,0,"n=7,714 (77.1%)","n=7,705 (96.8%)",n=9 (0.4%),Level churn rate: 0.1%,0.0
+SatisfactionScore,Categorical,2,"n=2,014 (20.1%)","n=1,575 (19.8%)",n=439 (21.5%),Level churn rate: 21.8%,0.4334
+SatisfactionScore,Categorical,3,"n=2,042 (20.4%)","n=1,641 (20.6%)",n=401 (19.7%),Level churn rate: 19.6%,0.4334
+SatisfactionScore,Categorical,5,"n=2,004 (20.0%)","n=1,607 (20.2%)",n=397 (19.5%),Level churn rate: 19.8%,0.4334
+SatisfactionScore,Categorical,4,"n=2,008 (20.1%)","n=1,594 (20.0%)",n=414 (20.3%),Level churn rate: 20.6%,0.4334
+SatisfactionScore,Categorical,1,"n=1,932 (19.3%)","n=1,545 (19.4%)",n=387 (19.0%),Level churn rate: 20.0%,0.4334
