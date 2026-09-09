@@ -1,0 +1,1017 @@
+\documentclass[10pt]{beamer}
+
+%================================================
+% THEME AND PACKAGES
+%================================================
+\usetheme{Madrid}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{ragged2e}
+
+%================================================
+% COLOR CONFIGURATION
+%================================================
+\definecolor{MSUBlue}{RGB}{0,51,102}
+\definecolor{LightBlue}{RGB}{230,240,250}
+
+\setbeamercolor{title}{fg=white,bg=MSUBlue}
+\setbeamercolor{frametitle}{fg=white,bg=MSUBlue}
+\setbeamercolor{structure}{fg=MSUBlue}
+\setbeamercolor{section in toc}{fg=MSUBlue}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% DOCUMENT START
+%================================================
+\begin{document}
+	
+	%================================================
+	% COVER PAGE
+	%================================================
+	{
+		\setbeamertemplate{footline}{}
+		\begin{frame}[plain]
+			
+			\begin{center}
+				
+				%================================================
+				% UNIVERSITY LOGO
+				%================================================
+				\includegraphics[width=0.35\linewidth,height=2.2cm]{0}
+				
+				\vspace{0.2cm}
+				
+	
+				
+				\vspace{0.2cm}
+				
+				{\large Faculty of Science and Technology}
+				
+				\vspace{0.2cm}
+				
+				{ Department of Applied Mathematics and Statistics}
+				
+				\vspace{0.5cm}
+				
+				%================================================
+				% TITLE
+				%================================================
+				{\textbf{
+						Customer Churn Prediction Using Random Forest Machine Learning Algorithms:
+						A Case Study of KCI Management Consultants Zimbabwe
+				}}
+				
+				\vspace{0.5cm}
+				
+				%================================================
+				% STUDENT DETAILS
+				%================================================
+				{\textbf{BY}}
+				
+				\vspace{0.2cm}
+				
+				{\large \textbf{Ishmael Mururami : R227365A}}
+				
+		
+				\vspace{0.5cm}
+				
+				%================================================
+				% SUBMISSION STATEMENT
+				%================================================
+				\begin{minipage}{0.85\textwidth}
+					\centering
+					\justifying
+				
+					This Dissertation Proposal is submitted in partial fulfillment of the requirements for the Bachelor of Science Honors Degree in Applied Statistics.
+				\end{minipage}
+				
+				\vfill
+				
+				{\large May 2026}
+				
+				\vspace{0.2cm}
+				
+				{\large Gweru, Zimbabwe}
+				
+			\end{center}
+			
+		\end{frame}
+	}
+	
+	%================================================
+	%================================================
+	% INTRODUCTION
+	%================================================
+	\begin{frame}{Introduction}
+		
+		\small
+		
+		\begin{block}{Context}
+			 It is more expensive to sign in a new client than keeping an existing one. Losing existing customers reduces revenue, weakens customer loyalty and increases the cost of acquiring new clients. In microfinance institutions, customer retention is important due to the dependence on long-term customer relationships and repeat borrowing behaviour.
+		\end{block}
+		
+		\vspace{0.0002cm}
+		
+		\begin{columns}
+			
+			%================================================
+			% LEFT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{alertblock}{Key Issues}
+				\begin{itemize}
+					\item Increasing customer attrition
+					\item Reduced customer lifetime value
+					\item High customer replacement costs
+					\item Limited predictive retention systems
+				\end{itemize}
+			\end{alertblock}
+			
+			%================================================
+			% RIGHT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{exampleblock}{Focus}
+				\begin{itemize}
+					\item Analyze factors influencing churn
+					\item Train a Random Forest model
+					\item Predict customer exit behavior
+					\item Deploy a prediction system
+				\end{itemize}
+			\end{exampleblock}
+			
+		\end{columns}
+		
+		\vspace{0.0003cm}
+		
+		\begin{block}{Why Random Forest?}
+			Random Forest algorithm provides high predictive accuracy, handles non-linear customer behaviour patterns, reduces overfitting and produces interpretable feature importance measures useful for managerial decision making.
+		\end{block}
+		
+	\end{frame}
+	
+	
+	
+	%================================================
+	% BACKGROUND TO THE STUDY
+	%================================================
+	\begin{frame}{Background to the Study}
+		
+		\small
+		
+		\begin{block}{Overview}
+		Studies show that retaining existing customers is significantly less costly than acquiring new ones (Kotler \& Keller, 2016). Consequently, organizations are increasingly adopting predictive analytics and machine learning techniques to improve customer retention strategies.
+		\end{block}
+		
+		\vspace{0.0000002cm}
+		
+		\begin{columns}
+			
+			%================================================
+			% LEFT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{exampleblock}{Microfinance}
+				Microfinance institutions rely on long-term customer relationships, repeat borrowing and trust. High churn rates negatively affect profitability, customer lifetime value, and institutional sustainability.
+			\end{exampleblock}
+			
+			%================================================
+			% RIGHT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{exampleblock}{Machine Learning}
+				Recent studies indicate that ML models such as XGBoost, Random Forest and Neural Nets are best in churn prediction due to their ability to model nonlinear behaviour patterns (Huang et al., 2012).
+			\end{exampleblock}
+			
+		\end{columns}
+		
+		\vspace{0.002cm}
+		
+		
+
+\begin{block}{Major Motivation}
+	Most local customer churn studies focus on identifying churn determinants and predictive analytics without deploying practical decision-support systems. This study combines customer retention analytics, ML and web-based deployment to support customer retention at KCI Management Consultants.
+\end{block}
+
+	\vspace{0.003cm}
+			
+	\end{frame}
+	
+	
+%================================================
+% PROBLEM STATEMENT
+%================================================
+\begin{frame}{Problem Statement}
+	
+	\small
+	
+	\begin{alertblock}{Challenges}
+		\begin{itemize}
+			\item KCI Management Consultants faces the risk of losing customers through churn.
+			
+			\item Customer attrition reduces revenue, customer loyalty and long-term profitability.
+			
+			\item Existing retention approaches are largely reactive rather than predictive.
+			
+			\item High risk customers are difficult to identify before they exit the institution.
+			
+			\item Many customer churn studies focus more on exploratory analysis and prediction accuracy without deploying usable decision support systems.
+			
+			\item The absence of intelligent churn prediction platform for KCI limits data driven retention strategies.
+		\end{itemize}
+	\end{alertblock}
+	
+	\vspace{0.2cm}
+	
+	\begin{exampleblock}{Proposed Solution}
+		This study aims to develop and deploy a Random Forest-based application to predict individual level customer churn and support retention decision making at KCI Management Consultants.
+	\end{exampleblock}
+	
+\end{frame}
+
+
+%================================================
+% RESEARCH QUESTIONS
+%================================================
+\begin{frame}{Research Questions}
+	
+	\small
+	
+	\begin{exampleblock}{Research Questions}
+		\begin{enumerate}
+			\item What are the major factors influencing customer churn at KCI Management Consultants?
+			
+			\item How effectively can a Random Forest model predict customer churn?
+			
+			\item How can a deployed web-based prediction system support customer retention?
+		\end{enumerate}
+	\end{exampleblock}
+	
+\end{frame}
+	
+%================================================
+% RESEARCH OBJECTIVES
+%================================================
+\begin{frame}{Research Objectives}
+	
+	\small
+	
+	\begin{block}{Main Aim}
+		To develop a Random Forest-based customer churn prediction and decision support system for KCI Management Consultants.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+	\begin{exampleblock}{Objectives}
+		\begin{enumerate}
+			\item To identify the key determinants influencing customer churn at KCI Management Consultants.
+			
+			\item To develop and train a Random Forest machine learning model for predicting customer churn.
+			
+			\item To deploy the trained churn prediction model through a web-based application.
+		\end{enumerate}
+	\end{exampleblock}
+	
+\end{frame}
+	
+	
+%================================================
+% EXPECTED OUTCOMES
+%================================================
+\begin{frame}{Expected Outcomes}
+	
+	\small
+	\begin{exampleblock}{Expected Outcomes}
+			\begin{itemize}
+				\item Identification of major churn drivers
+		
+	
+				\item Trained and saved Random Forest prediction model
+				
+				\item Churn prediction website application
+			\end{itemize}
+		\end{exampleblock}
+		
+
+	
+\end{frame}
+	
+	
+%================================================
+% JUSTIFICATION OF THE STUDY
+%================================================
+\begin{frame}{Justification of the Study}
+	
+	\small
+	
+	\begin{block}{Academic Contribution}
+		The study contributes to the growing body of knowledge in customer churn analytics, machine learning and predictive modelling within the microfinance sector.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+
+		
+		\begin{exampleblock}{Institutional Significance}
+			\begin{itemize}
+				\item Supports customer retention
+				
+				\item Reduces customer attrition risk
+				
+				\item Improves decision making processes
+			\end{itemize}
+		\end{exampleblock}
+		
+
+	
+\end{frame}
+	
+	
+%================================================
+% SCOPE OF THE STUDY
+%================================================
+\begin{frame}{Scope of the Study}
+	
+	\small
+	
+	\begin{block}{Geographical and Entity Scope}
+		The study focuses on KCI Management Consultants, a microfinance institution operating in Zimbabwe.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+	\begin{columns}
+		
+		%================================================
+		% LEFT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{Conceptual Scope}
+			\begin{itemize}
+				\item Customer churn analytics
+				
+				\item Random Forest machine learning
+				
+				\item Predictive modelling
+				
+				\item Model Deployment
+			\end{itemize}
+		\end{exampleblock}
+		
+		%================================================
+		% RIGHT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{Parametric Scope}
+			\begin{itemize}
+				\item Demographic variables
+				\item Behavioural indicators
+				\item Financial indicators
+				\item Customer engagement variables
+			\end{itemize}
+		\end{exampleblock}
+		
+	\end{columns}
+	
+	\vspace{0.3cm}
+	
+	\begin{block}{Temporal Scope}
+		The study uses customer churn data collected from the institutional dataset provided for research.
+	\end{block}
+	
+\end{frame}
+	
+
+%================================================
+% ASSUMPTIONS OF THE STUDY
+%================================================
+\begin{frame}{Assumptions of the Study}
+	
+	\small
+	
+	\begin{exampleblock}{Study Assumptions}
+		\begin{itemize}
+			\item The dataset represents enough customer behaviour at KCI Management Consultants.
+			
+			\item Customer churn patterns can be explained using the selected predictor variables.
+			
+			\item The Random Forest algorithm is suitable for churn prediction using the available dataset.
+			
+			\item Customer behaviour remains relatively stable during the study period.
+		\end{itemize}
+	\end{exampleblock}
+	
+\end{frame}	
+	
+	
+	
+
+%================================================
+% LITERATURE REVIEW 
+%================================================
+\begin{frame}{Literature Review}
+	
+	\small
+
+
+		
+\begin{exampleblock}{Previous Studies in Zimbabwe}
+	\begin{itemize}
+		
+		\item Revesai et al. (2022) studied customer churn in Zimbabwean banks using Logistic Regression, Decision Trees, Random Forest, XGBoost and Deep Learning models. Neural Networks(87\% accuracy) outperfomed all models followed by random forests(86.5\% accuracy), but the study had limited feature coverage and lacked deployment of a practical system.
+		
+		\item Chiurunge et al. (2023) developed an Artificial Neural Network model for churn prediction: Case study of Econet Wireless Zimbabwe. The study focused mainly on predictive accuracy without interpretable feature analysis and deployment integration.
+		
+		\item Vhimisai et al. (2024) examined customer switching behaviour in the Zimbabwean Mobile Telecommunication Industry using explanatory statistical approaches. The study did not implement machine learning models for churn prediction.
+		
+		\item Ahmed et al. (2024) compared Logistic Regression, Random Forest, GBM and SVM in retail banking churn prediction and found ensemble methods highly effective all with more than 80\% accuracy, although the study did not focus on deploying systems within microfinance institutions.
+		
+	\end{itemize}
+\end{exampleblock}
+	
+	\vspace{0.1cm}
+	
+
+	
+\end{frame}
+	
+	
+
+
+\begin{frame}{Con't}
+	
+	\small
+			
+	\begin{exampleblock}{Why Random Forest?}
+		\begin{itemize}
+			\item Handles nonlinear relationships
+			
+			\item Reduces overfitting
+			
+			\item Produces feature importance
+			
+			\item Maintains strong predictive accuracy
+			\item Most importantly, apart from proven strong predictive accuracy which XGBoost and Neural Networks do, there are best when interpretation is important like in the case of customer churn.
+		\end{itemize}
+	\end{exampleblock}
+	
+	
+		\begin{alertblock}{Research Gaps}
+			\begin{itemize}
+				\item Limited studies in Zimbabwean microfinances
+				\item No customer churn decision support system at KCI Management Consultants
+				
+				\item Limited integration of model deployment
+			\end{itemize}
+		\end{alertblock}
+		
+	
+	
+	\vspace{0.2cm}
+	
+
+\end{frame}
+	
+	
+	
+	
+	%================================================
+	% RESEARCH DESIGN
+	%================================================
+	\begin{frame}{Research Methodology}
+		
+		\small
+		
+		\begin{block}{Research Design}
+			The study adopts a quantitative predictive analytics research design based on supervised machine learning techniques. The design focuses on analyzing customer behavior patterns and predicting customer churn using historical institutional data.
+		\end{block}
+		
+		\vspace{0.3cm}
+		
+		\begin{columns}
+			
+			%================================================
+			% LEFT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{exampleblock}{Characteristics}
+				\begin{itemize}
+					\item Quantitative research approach
+					
+					\item Predictive modelling 
+					
+					\item Case study of KCI Management Consultants
+					
+					\item Supervised classification problem
+				\end{itemize}
+			\end{exampleblock}
+			
+			%================================================
+			% RIGHT COLUMN
+			%================================================
+			\column{0.48\textwidth}
+			
+			\begin{exampleblock}{Why This Design?}
+				\begin{itemize}
+					\item Supports churn prediction
+					
+					\item Enables statistical analysis
+					
+					\item Handles structured customer data
+					
+					\item Supports deployment of ML systems
+				\end{itemize}
+			\end{exampleblock}
+			
+		\end{columns}
+		
+	\end{frame}
+	
+
+
+
+
+%================================================
+% SAMPLE AND DATA SOURCE
+%================================================
+\begin{frame}{Con't}
+	
+	\small
+	
+	\begin{block}{Data Source}
+		The study will use secondary customer data obtained from KCI Management Consultants. The dataset contains customer demographic, financial and behavioral variables associated with churn behavior.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+	\begin{columns}
+		
+		%================================================
+		% LEFT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{alertblock}{Sampling Design}
+			\begin{itemize}
+				\item Secondary institutional dataset
+				
+				\item Complete-case customer records
+				
+				\item Binary churn classification
+				
+				\item Customers represented as observations
+			\end{itemize}
+		\end{alertblock}
+		
+		%================================================
+		% RIGHT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{Target Variable}
+			\begin{itemize}
+				\item Churn = 1 : Customer exited
+				
+				\item Churn = 0 : Customer retained
+				
+				\item Supervised learning target
+				
+				\item Basis for prediction modelling
+			\end{itemize}
+		\end{exampleblock}
+		
+	\end{columns}
+	
+\end{frame}
+	
+
+
+\begin{frame}{Con't}
+	
+	\small
+	
+	\begin{block}{Data Preprocessing}
+		To improve data quality, reduce inconsistencies and enhance model performance before training the Random Forest algorithm.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+	\begin{columns}
+		
+		%================================================
+		% LEFT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{alertblock}{Data Cleaning}
+			\begin{itemize}
+				\item Missing value assessment
+				
+				\item Duplicate record removal
+				
+				\item Outlier detection
+				
+				\item Data consistency checks
+			\end{itemize}
+		\end{alertblock}
+		
+		%================================================
+		% RIGHT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{Feature Preparation}
+			\begin{itemize}
+				\item Encoding categorical variables
+				
+				\item Feature selection
+				
+				\item Train-test split
+				
+				\item Class imbalance assessment
+			\end{itemize}
+		\end{exampleblock}
+		
+	\end{columns}
+	
+	\vspace{0.3cm}
+	
+	\begin{block}{Train-Test Split}
+		The dataset will be divided into training and testing datasets using
+		\[
+		80\% \text{ Training Data} \quad ; \quad 20\% \text{ Testing Data}
+		\]
+	\end{block}
+	
+\end{frame}
+
+
+%================================================
+% MODEL DEVELOPMENT
+%================================================
+\begin{frame}{Con't}
+	
+	\small
+	
+	\begin{block}{Random Forest Classifier}
+		The study will employ the Random Forest algorithm to classify customers according to their probability of churn. Random Forest is ensemble learning algorithm constructs multiple decision trees and combines their predictions to improve classification accuracy.
+	\end{block}
+	
+	\vspace{0.2cm}
+	
+	\begin{exampleblock}{Random Forest Prediction}
+		\[
+		\hat{Y} = \text{Majority Vote}(T_1,T_2,T_3,\dots,T_n)
+		\]
+	\end{exampleblock}
+	
+	\vspace{0.2cm}
+
+		
+		\begin{exampleblock}{Model Optimization}
+			\begin{itemize}
+				\item Hyperparameter tuning
+				
+				\item Cross-validation
+				
+				\item Tree depth optimization
+				
+				\item Feature importance analysis
+			\end{itemize}
+		\end{exampleblock}
+		
+
+	
+\end{frame}
+
+
+
+
+\begin{frame}{Con't}
+	
+	\small
+	
+	\begin{block}{Evaluation Metrics}
+		The performance of the Random Forest model will be evaluated using classification metrics derived from the confusion matrix.
+	\end{block}
+	
+	\vspace{0.2cm}
+	
+	\begin{exampleblock}{Confusion Matrix}
+		\[
+		\begin{bmatrix}
+			TP & FP \\
+			FN & TN
+		\end{bmatrix}
+		\]
+	\end{exampleblock}
+	
+	\vspace{0.2cm}
+	
+	\begin{columns}
+		
+		%================================================
+		% LEFT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{alertblock}{Performance Metrics}
+			\[
+			Accuracy = \frac{TP+TN}{TP+TN+FP+FN}
+			\]
+			
+			\[
+			Precision = \frac{TP}{TP+FP}
+			\]
+			
+			\[
+			Recall = \frac{TP}{TP+FN}
+			\]
+		\end{alertblock}
+		
+		%================================================
+		% RIGHT COLUMN
+		%================================================
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{ }
+			\[
+			F1 = 2 \times \frac{Precision \times Recall}{Precision+Recall}
+			\]
+			
+			\[
+		 	ROC\text{ }AUC
+			\]
+		
+		\end{exampleblock}
+		
+	\end{columns}
+	
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Con't}
+	
+	\small
+	
+	\begin{block}{Deployment Framework}
+		The trained Random Forest model will be deployed  to enable real-time customer churn prediction
+	\end{block}
+	
+	\vspace{0.0003cm}
+	
+
+		
+		\begin{exampleblock}{Development and Deployment}
+			\begin{itemize}
+								
+				\item Pandas and NumPy for data processing
+				\item Scikit-learn for Random Forest training
+				\item Pickle/Joblib for model serialization
+				\item Flask for web applications
+				
+				
+			\end{itemize}
+		\end{exampleblock}
+	\begin{columns}
+	
+	%================================================
+	% LEFT COLUMN
+	%================================================
+	\column{0.50\textwidth}
+		
+		\begin{exampleblock}{Deployment Workflow}
+			\[
+			Data \rightarrow Preprocessing \rightarrow Training
+			\]
+			
+			\[
+			\rightarrow Serialized\ Model \rightarrow Flask\ API
+			\]
+			
+			\[
+			\rightarrow Web\ Application \rightarrow Prediction
+			\]
+		\end{exampleblock}
+		
+	\end{columns}
+	\vspace{0.3cm}
+\end{frame}
+
+\vspace{0.3cm}
+
+
+\begin{frame}{Limitations of the Study}
+	
+	\small
+	
+	\begin{block}{Methodological Limitations}
+		The study acknowledges several methodological limitations that may influence the generalization and interpretation of findings.
+	\end{block}
+	
+	\vspace{0.3cm}
+	
+	\begin{columns}
+		
+
+		\column{0.48\textwidth}
+		
+		\begin{alertblock}{Data Limitations}
+			\begin{itemize}
+				\item Dependence on secondary institutional data
+				
+				\item Possible class imbalance in churn records
+				
+				\item Limited variables available in dataset
+			\end{itemize}
+		\end{alertblock}
+		
+
+		\column{0.48\textwidth}
+		
+		\begin{exampleblock}{Model Limitations}
+			\begin{itemize}
+				\item Results limited to KCI dataset
+				
+				\item Customer behavior may change over time
+				
+				\item Model performance depends on data quality
+			\end{itemize}
+		\end{exampleblock}
+		
+	\end{columns}
+	
+	\vspace{0.3cm}
+	
+	\begin{block}{Measures}
+		The study will apply preprocessing techniques, validation procedures and performance evaluation metrics to improve model reliability and reduce analytical bias.
+	\end{block}
+	
+\end{frame}
+
+
+
+%================================================
+% DEFINITION OF KEY TERMS
+%================================================
+\begin{frame}{Definition of Key Terms}
+	
+	\small
+	
+	\begin{block}{Operational Definitions}
+	\end{block}
+	
+	\vspace{0.2cm}
+	
+	\begin{description}
+		
+		\item[\textbf{Customer Attrition}]
+		The gradual loss of customers over time due to termination of business relationships with an institution.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Customer Retention}]
+		Strategies and processes used by organizations to maintain long-term customer relationships and reduce customer loss.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Customer Churn}]
+		The process in which a customer discontinues their relationship with a financial institution.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Random Forest}]
+		An ensemble machine learning algorithm that combines multiple decision trees for classification and prediction.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Predictive Analytics}]
+		The use of statistical and machine learning techniques to predict future outcomes using historical data.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Machine Learning}]
+		A branch of artificial intelligence that enables systems to learn patterns from data and make predictions.
+		
+		\vspace{0.1cm}
+		
+		\item[\textbf{Web-Based Deployment}]
+		Implementation of a trained machine learning model within an online application for real-time usage.
+		
+	\end{description}
+	
+\end{frame}
+
+
+
+
+\begin{frame}{Summary}
+	
+	\small
+	
+	\begin{block}{Overview}
+		The study proposes the development of a Random Forest-based customer churn prediction system for KCI Management Consultants, Zimbabwe. The research focuses on identifying major determinants of customer churn, developing a predictive machine learning model, and deploying the trained model through a web-based application.
+	\end{block}
+	
+	\vspace{0.003cm}
+	
+
+		
+		\begin{exampleblock}{Areas Covered}
+			\begin{itemize}
+				\item Background to customer churn
+				
+				\item Problem statement
+				
+				\item Research objectives
+				
+				\item Literature review
+				
+				\item Methodological framework
+			\end{itemize}
+		\end{exampleblock}
+		
+
+		
+
+	
+	\vspace{0.003cm}
+	
+	\begin{block}{Final Remark}
+		The study seeks to contribute toward data-driven customer retention management in Zimbabwean microfinance institutions through the integration of machine learning and deployable predictive systems.
+	\end{block}
+	
+\end{frame}
+
+
+%================================================
+% REFERENCES
+%================================================
+\begin{frame}{References}
+	
+	\tiny
+	
+	\begin{thebibliography}{99}
+		
+		\bibitem{}
+		Ahmad, A. K., Jafar, A., \& Aljoumaa, K. (2019). Customer churn prediction in telecom using machine learning in big data platform. \textit{Journal of Big Data, 6}(28), 1--24.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Breiman, L. (2001). Random forests. \textit{Machine Learning, 45}(1), 5--32.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Buckinx, W., \& Van den Poel, D. (2005). Customer base analysis: Partial defection of behaviourally loyal clients in a non-contractual FMCG retail setting. \textit{European Journal of Operational Research, 164}(1), 252--268.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Chen, T., \& Guestrin, C. (2015). XGBoost: A scalable tree boosting system. \textit{Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, 785--794.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Huang, B., Kechadi, T., \& Buckley, B. (2012). Customer churn prediction in telecommunications. \textit{Expert Systems with Applications, 39}(1), 1414--1425.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Idris, A., Rizwan, M., \& Khan, A. (2012). Churn prediction in telecom using Random Forest and PSO based data balancing in combination with various feature selection strategies. \textit{Computers \& Electrical Engineering, 38}(6), 1808--1819.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Kotler, P., \& Keller, K. L. (2016). \textit{Marketing Management} (15th ed.). Pearson Education.
+		
+		\vspace{0.15cm}
+		
+		\bibitem{}
+		Verbeke, W., Martens, D., Mues, C., \& Baesens, B. (2012). Building comprehensible customer churn prediction models with advanced rule induction techniques. \textit{Expert Systems with Applications, 38}(3), 2354--2364.
+		
+	\end{thebibliography}
+	
+\end{frame}
+
+
+
+	
+	
+\end{document}

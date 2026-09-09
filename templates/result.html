@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Churn Risk Assessment</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            CI
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Customer Intelligence
+            </div>
+
+            <div class="brand-subtitle">
+                Churn Prediction Platform
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav-status">
+
+        <span class="status-dot"></span>
+
+        Prediction System Online
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="main-container">
+
+
+    <!-- HERO -->
+
+    <section class="result-hero">
+
+        <div class="eyebrow">
+            PREDICTION COMPLETE
+        </div>
+
+
+        <h1>
+
+            Customer churn
+
+            <span>
+                risk assessment
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            The trained Random Forest model has evaluated
+            the submitted customer profile and estimated
+            the probability of churn.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- RESULT -->
+
+    <section class="result-card">
+
+
+        <!-- RESULT HEADER -->
+
+        <div class="result-top">
+
+
+            <div>
+
+                <div class="section-label">
+                    PREDICTED OUTCOME
+                </div>
+
+
+                <h2>
+                    {{ result }}
+                </h2>
+
+            </div>
+
+
+            <div class="risk-badge
+                {% if risk_level == 'High Risk' %}
+                    high
+                {% elif risk_level == 'Medium Risk' %}
+                    medium
+                {% else %}
+                    low
+                {% endif %}
+            ">
+
+                {{ risk_level }}
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- PROBABILITY -->
+
+        <div class="probability-section">
+
+
+            <div class="probability-header">
+
+                <span>
+                    Estimated probability of churn
+                </span>
+
+                <strong>
+                    {{ probability }}%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar
+                    {% if risk_level == 'High Risk' %}
+                        high-bar
+                    {% elif risk_level == 'Medium Risk' %}
+                        medium-bar
+                    {% else %}
+                        low-bar
+                    {% endif %}
+                    "
+                    style="width: {{ probability }}%;">
+                </div>
+
+            </div>
+
+
+            <div class="risk-scale">
+
+                <span>
+                    LOW
+                </span>
+
+                <span>
+                    MEDIUM
+                </span>
+
+                <span>
+                    HIGH
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CUSTOMER PROFILE -->
+
+        <div class="profile-section">
+
+            <div class="section-label">
+                CUSTOMER PROFILE
+            </div>
+
+
+            <div class="profile-grid">
+
+
+                <div class="profile-item">
+
+                    <span>
+                        Gender
+                    </span>
+
+                    <strong>
+                        {{ customer.Gender }}
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>
+                        Age
+                    </span>
+
+                    <strong>
+                        {{ customer.Age }}
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>
+                        Number of Products
+                    </span>
+
+                    <strong>
+                        {{ customer.NumberOfProducts }}
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>
+                        Active Member
+                    </span>
+
+                    <strong>
+                        {{ customer.IsActiveMember }}
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-item">
+
+                    <span>
+                        Customer Complaint
+                    </span>
+
+                    <strong>
+                        {{ customer.Complain }}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RETENTION GUIDANCE -->
+
+        <div class="insight-section">
+
+
+            <div class="insight-icon">
+                ✓
+            </div>
+
+
+            <div>
+
+                <div class="section-label">
+                    RETENTION GUIDANCE
+                </div>
+
+
+                <p>
+                    {{ recommendation }}
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ACTIONS -->
+
+        <div class="result-actions">
+
+            <a href="/"
+               class="secondary-button">
+
+                ← Analyse another customer
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- DECISION SUPPORT NOTE -->
+
+    <section class="result-note">
+
+        <strong>
+            Decision-support interpretation
+        </strong>
+
+
+        <p>
+
+            The prediction is generated using a
+            Random Forest model.
+            The application uses the five selected
+            determinants: Complain, Age, Number of Products,
+            Is Active Member and Gender.
+
+        </p>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        Customer Intelligence Platform
+    </div>
+
+    <div>
+        Customer Churn Prediction & Analysis
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

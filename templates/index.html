@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Churn Intelligence</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="brand-mark">CI</div>
+
+            <div>
+                <div class="brand-name">Customer Intelligence</div>
+                <div class="brand-subtitle">Churn Prediction Platform</div>
+            </div>
+        </div>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Prediction System Online
+        </div>
+
+    </nav>
+
+
+    <main class="main-container">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    CUSTOMER RETENTION ANALYTICS
+                </div>
+
+                <h1>
+                    Predict customer churn
+                    <span>before it happens.</span>
+                </h1>
+
+                <p>
+                    Enter customer information to estimate churn probability
+                    and identify the level of retention risk.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="prediction-card">
+
+            <div class="card-header">
+
+                <div>
+                    <div class="section-label">CUSTOMER ASSESSMENT</div>
+                    <h2>Customer profile</h2>
+                </div>
+
+                <div class="model-badge">
+                    Random Forest
+                </div>
+
+            </div>
+
+
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+
+
+            <form action="/predict" method="POST">
+
+                <div class="form-grid">
+
+
+                    <!-- Gender -->
+
+                    <div class="form-group">
+
+                        <label for="Gender">
+                            Gender
+                        </label>
+
+                        <select id="Gender"
+                                name="Gender"
+                                required>
+
+                            <option value="" disabled selected>
+                                Select gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Age -->
+
+                    <div class="form-group">
+
+                        <label for="Age">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="Age"
+                            name="Age"
+                            min="18"
+                            max="100"
+                            placeholder="Enter age"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Number of Products -->
+
+                    <div class="form-group">
+
+                        <label for="NumberOfProducts">
+                            Number of Products
+                        </label>
+
+                        <input
+                            type="number"
+                            id="NumberOfProducts"
+                            name="NumberOfProducts"
+                            min="1"
+                            max="10"
+                            placeholder="Enter number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Active Member -->
+
+                    <div class="form-group">
+
+                        <label for="IsActiveMember">
+                            Active Member
+                        </label>
+
+                        <select
+                            id="IsActiveMember"
+                            name="IsActiveMember"
+                            required>
+
+                            <option value="" disabled selected>
+                                Select status
+                            </option>
+
+                            <option value="1">
+                                Yes
+                            </option>
+
+                            <option value="0">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Complaint -->
+
+                    <div class="form-group">
+
+                        <label for="Complain">
+                            Customer Complaint
+                        </label>
+
+                        <select
+                            id="Complain"
+                            name="Complain"
+                            required>
+
+                            <option value="" disabled selected>
+                                Select response
+                            </option>
+
+                            <option value="1">
+                                Yes
+                            </option>
+
+                            <option value="0">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-footer">
+
+                    <div class="form-note">
+
+                        <span class="shield">✓</span>
+
+                        Prediction made using a Random Forest machine learning
+                        model.
+
+                    </div>
+
+                    <button type="submit">
+                        Analyse Churn Risk
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section class="feature-strip">
+
+            <div>
+                <strong>5</strong>
+                <span>Predictive variables</span>
+            </div>
+
+            <div>
+                <strong>RF</strong>
+                <span>Machine learning model</span>
+            </div>
+
+            <div>
+                <strong>AI</strong>
+                <span>Risk assessment</span>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div>
+            Customer Intelligence Platform
+        </div>
+
+        <div>
+            Customer Churn Prediction & Analysis
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
